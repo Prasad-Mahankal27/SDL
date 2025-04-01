@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search College Name</title>
+</head>
+<body>
+    <h2>Search College Name</h2>
+
+    <? php
+    $college_names = ["PCCOE", "COEP", "MIT", "VIT", "IIT", "NIT"];
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $search_name = strtoupper(trim($_POST["search_name"]));
+        $found = false;
+
+        for ($i = 0; $i < count($college_names); $i++) {
+            if ($college_names[$i] === $search_name) {
+                $found = true;
+                break;
+            }
+        }
+
+        echo "<p>The name '$search_name' " . ($found ? "is present." : "is not present.") . "</p>";
+    }
+    ?>
+
+    <form method="post">
+        <label for="search_name">Enter a college name:</label>
+        <input type="text" name="search_name" id="search_name" required />
+        <button type="submit">Search</button>
+    </form>
+</body>
+</html>

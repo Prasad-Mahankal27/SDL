@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shape Calculator</title>
+</head>
+<body>
+    <h2>Calculate Area & Volume</h2>
+    <form method="get">
+        <label for="op">Select Shape:</label>
+        <select name="op" id="op">
+            <option value="1">Cone</option>
+            <option value="2">Cylinder</option>
+            <option value="3">Sphere</option>
+        </select>
+        <br><br>
+        <label for="r">Radius:</label>
+        <input type="number" name="r" id="r" required>
+        <br><br>
+        <label for="h">Height (for Sphere, leave empty):</label>
+        <input type="number" name="h" id="h">
+        <br><br>
+        <button type="submit">Calculate</button>
+    </form>
+    <br>
+    <? php
+    if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['op'])) {
+        define('PI', 3.14);
+
+        interface Shape {
+            function calc_area($r, $h);
+            function calc_vol($r, $h);
+        }
+
+        class Sphere implements Shape {
+            function calc_area($r, $h) { return 4 * PI * $r * $r; }
+            function calc_vol($r, $h) { return (4 / 3) * PI * $r * $r * $r; }
+        }
+
+        class Cylinder implements Shape {
+            function calc_area($r, $h) { return 2 * PI * $r * ($r + $h); }
+            function calc_vol($r, $h) { return PI * $r * $r * $h; }
+        }
+
+        class Cone implements Shape {
+            function calc_area($r, $h) { return 0.5 * $r * $r * $h; }
+            function calc_vol($r, $h) { return (1 / 3) * PI * $r * $r * $h; }
+        }
+
+        $shapes = [1 => new Cone(), 2 => new Cylinder(), 3 => new Sphere()];
+        $op = $_GET['op'] ?? 0;
+        $r = $_GET['r'] ?? 0;
+        $h = $_GET['h'] ?? 0;
+
+        if (isset($shapes[$op])) {
+            $obj = $shapes[$op];
+            $area = $obj->calc_area($r, $h);
+            $volume = $obj->calc_vol($r, $h);
+            echo "<p>Area: $area</p>";
+            echo "<p>Volume: $volume</p>";
+        } else {
+            echo "<p>Invalid operation.</p>";
+        }
+    }
+    ?>
+</body>
+</html>

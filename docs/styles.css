@@ -1,0 +1,125 @@
+body {
+    background-color: #000;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+  
+.navbar {
+    background: transparent !important;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+  }
+
+  .navbar-brand {
+    color: #ff6600 !important;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .search-box {
+    display: flex;
+    align-items: center;
+  }
+
+  .search-box input {
+    background: transparent;
+    border: 1px solid #333;
+    color: white;
+  }
+
+  .search-box button {
+    background: #ff6600;
+    border: none;
+    color: white;
+  }
+
+  .hero-section {
+    background: url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+  }
+
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+  }
+
+  .hero-content h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .hero-content span {
+    color: #ff6600;
+  }
+
+  .join-btn {
+    background: #ff6600;
+    border: none;
+    padding: 10px 30px;
+    font-size: 18px;
+    margin-top: 20px;
+    transition: 0.3s;
+  }
+
+  .join-btn:hover {
+    background: #ff8533;
+  }
+
+  .login-box {
+    position: absolute;
+    right: 50px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    width: 300px;
+    z-index: 1;
+  }
+
+  .login-box input {
+    background: transparent;
+    border: 1px solid #333;
+    color: white;
+    margin-bottom: 15px;
+    padding: 8px;
+    width: 100%;
+  }
+
+  .login-box button {
+    background: #ff6600;
+    border: none;
+    color: white;
+    padding: 8px;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+  }
+
+  .social-icons a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+  }
